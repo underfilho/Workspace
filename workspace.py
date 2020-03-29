@@ -52,7 +52,7 @@ class Workspace(ABC):
             # Desenha novamente
             self.draw()
 
-        # Mantém em loop
+        # Mantém em loop o método __update()
         self._window.after(self._time, self.__update)
 
     def size(self, width, height):
@@ -73,16 +73,17 @@ class Workspace(ABC):
             self._canvas.create_oval(self.coord(x-a, 0), self.coord(y-b, 1), self.coord(x+a, 0), self.coord(y+b, 1), **kwargs)
 
     # Mudar o sistema de coordenadas que por padrão tem o centro no canto superior esquerdo e tem o eixo y invertido
-    # Para ter um eixo cartesiano padrão 
+    # Para ter um sistema cartesiano padrão use coord_sys(self._width/2, self._height/2, 1, -1)
     def coord_sys(self, x, y, e1 = 1, e2 = 1): 
         self._center = [x, y]
         self._basis = [e1, e2]
 
-    # Coordenadas no sistema definido para coordenadas em pixels id = 0 para e 1 para y
+    # Conversões
+    # Coordenadas no sistema definido para coordenadas em pixels. id = 0 para e 1 para y
     def coord(self, num, id):
         return self._center[id] + num*self._basis[id]
 
-    # Coordenadas em pixels para coordenadas no sistema definido id = 0 para e 1 para y
+    # Coordenadas em pixels para coordenadas no sistema definido. id = 0 para e 1 para y
     def _coord(self, num, id):
         return (num - self._center[id])/self._basis[id]
 
