@@ -10,10 +10,10 @@ class Main(Workspace):
         super().__init__()
 
     def config(self):
-        self.title = "Pendulum"
+        self._title = "Pendulum"
         self.size(300, 250)
         self.coord_sys(150, 50)
-        self.time = 30
+        self._time = 30
 
     def draw(self):
         ball = [self.len*math.sin(self.ang), self.len*math.cos(self.ang)] # Posição da bola

@@ -11,9 +11,9 @@ class Main(Workspace):
         super().__init__()
 
     def config(self):
-        self.title = "Arrow"
+        self._title = "Arrow"
         self.size(400, 300)
-        self.time = 20
+        self._time = 20
         self._window.bind('<Button-1>', self.newpos)
 
     def draw(self):
