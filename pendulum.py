@@ -1,4 +1,4 @@
-from workspace import Workspace
+from workspace import Workspace 
 import math
 
 class Main(Workspace):
@@ -17,10 +17,10 @@ class Main(Workspace):
 
     def draw(self):
         ball = [self.len*math.sin(self.ang), self.len*math.cos(self.ang)] # Posição da bola
-        self.line(0, 0, ball[0], ball[1], fill="black")
-        self.circle(ball[0], ball[1], 10, 10, fill="black") # Círculo de raio 10
+        self.line(0, 0, ball[0], ball[1], fill="black") # Desenha o fio
+        self.circle(ball[0], ball[1], 10, 10, fill="black") # Desenha um círculo de raio 10
 
-        self.ang__ = -1*math.sin(self.ang)/self.len # Equação de aceleração do pêndulo simples com g=1
+        self.ang__ = -1.5*math.sin(self.ang)/self.len # Equação de aceleração do pêndulo simples com g=1.5
         self.ang_ += self.ang__ 
         self.ang += self.ang_
 
