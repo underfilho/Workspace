@@ -40,7 +40,9 @@ class MyClass(Workspace):
 
 ```self.line(x1, y1, x2, y2, permanencia, fill="blue")``` Desenha uma linha com os pontos em questão, permanencia é um argumento opcional, caso True o desenho não será apagado nos próximos frames, argumentos extras também são possíveis, nesse caso a linha será azul.
 
-```self.circle(center_x, center_y, largura, altura, fill="black")``` Desenha uma elipse, caso queira realmente um círculo dê o mesmo valor para largura e altura, sendo assim, o raio do círculo, em fill você pode definir a cor (assim como para self.line).
+```self.circle(center_x, center_y, a, b, fill="black")``` Desenha uma elipse, caso queira realmente um círculo dê o mesmo valor para a e b, sendo assim, o raio do círculo, em fill você pode definir a cor (assim como para self.line).
+
+```self.rec(center_x, center_y, largura, altura)``` e ```self.rec_corners(x1, y1, x2, y2)``` Desenham retângulos, rec baseado no centro e rec_corners usando dois pontos, superior esquerdo e inferior direito.
 
 Com ```self.stop()``` e ```self.play()``` é possível pausar e dar play novamente no ciclo.
 
