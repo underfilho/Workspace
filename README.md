@@ -42,6 +42,8 @@ class MyClass(Workspace):
 
 ```self.circle(center_x, center_y, largura, altura, fill="black")``` Desenha uma elipse, caso queira realmente um círculo dê o mesmo valor para largura e altura, sendo assim, o raio do círculo, em fill você pode definir a cor (assim como para self.line).
 
+Com ```self.stop()``` e ```self.play()``` é possível pausar e dar play novamente no ciclo.
+
 
 Para conhecer mais argumentos extras http://www.effbot.org/tkinterbook/canvas.htm (self.line envia todos os argumentos extras para canvas.create_line, assim como circle para create_oval)
 
