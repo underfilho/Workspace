@@ -38,7 +38,7 @@ class MyClass(Workspace):
     
 # Desenhos
 
-```self.line(x1, y1, x2, y2, permanencia, fill="blue")``` Desenha uma linha com os pontos em questão, permanencia é um argumento opcional, caso True o desenho não será apagado nos próximos frames, argumentos extras também são possíveis, nesse caso a linha será azul.
+```self.line(x1, y1, x2, y2, permanencia, fill="blue")``` Desenha uma linha com os pontos em questão, permanência é um argumento opcional, caso True o desenho não será apagado nos próximos frames, argumentos extras também são possíveis, nesse caso a linha será azul. (Permanência e argumentos adicionais estão disponíveis para todos os desenhos).
 
 ```self.circle(center_x, center_y, a, b, fill="black")``` Desenha uma elipse, caso queira realmente um círculo dê o mesmo valor para a e b, sendo assim, o raio do círculo, em fill você pode definir a cor (assim como para self.line).
 
