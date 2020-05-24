@@ -10,7 +10,7 @@ Primeiro de tudo você deve criar sua classe como filha de Workspace, no método
 ``` 
 class MyClass(Workspace):
   def __init__(self):
-    suas variáveis...
+    # Suas variáveis...
     super().__init__()
     
   def config(self):
