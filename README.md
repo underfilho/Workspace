@@ -23,7 +23,7 @@ class MyClass(Workspace):
 
 # Configurações
 
-```self.set_title("Titulo")``` Define o titulo da janela.
+```self.set_title("Titulo")``` Define o titulo da janela.\n
 ```self.size(width, height)``` Define o tamanho da janela.
 ```self.coord_sys(center_x, center_y, e1: base_e1, e2: base_e2)``` Explico melhor a seguir.
 ```self.set_time(20)``` Primeira opção de determinar o tempo, a cada 20 milissegundos draw é chamada novamente e um novo frame gerado.
