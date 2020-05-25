@@ -1,6 +1,17 @@
 from tkinter import Tk, Canvas, Frame
 from abc import ABC, abstractmethod
 
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def equal(self, other):
+        return self.x == other.x and self.y == other.y
+
 class Workspace(ABC):
     def __init__(self):
         self._window = Tk()
@@ -62,6 +73,20 @@ class Workspace(ABC):
         else:
             self._canvas.create_oval(self.coord(x-a, 0), self.coord(y-b, 1), self.coord(x+a, 0), self.coord(y+b, 1), **kwargs)
 
+    def rec(self, x, y, width, height, perm = False, **kwargs):
+        a = width/2
+        b = height/2
+        if not perm:
+            self._drawings.append(self._canvas.create_rectangle(self.coord(x-a, 0), self.coord(y-b, 1), self.coord(x+a, 0), self.coord(y+b, 1), **kwargs))
+        else:
+            self._canvas.create_rectangle(self.coord(x-a, 0), self.coord(y-b, 1), self.coord(x+a, 0), self.coord(y+b, 1), **kwargs)
+
+    def rec_corners(self, x1, y1, x2, y2, perm = False, **kwargs):
+        if not perm:
+            self._drawings.append(self._canvas.create_rectangle(self.coord(x1, 0), self.coord(y1, 1), self.coord(x2, 0), self.coord(y2, 1), **kwargs))
+        else:
+            self._canvas.create_rectangle(self.coord(x1, 0), self.coord(y1, 1), self.coord(x2, 0), self.coord(y2, 1), **kwargs)
+
     # Mudar o sistema de coordenadas que por padrão tem o centro no canto superior esquerdo e tem o eixo y invertido
     # Para ter um sistema cartesiano padrão use coord_sys(self._width/2, self._height/2, 1, -1)
     def coord_sys(self, x, y, e1 = 1, e2 = 1): 
@@ -87,7 +112,7 @@ class Workspace(ABC):
         frame = Frame(bg=self._color)
         frame.pack()
 
-        self._canvas = Canvas(frame, width=self._width, height=self._height, bg=self._color)
+        self._canvas = Canvas(frame, width=self._width, height=self._height, bg=self._color, highlightthickness=0)
         self._canvas.pack()
 
         self.__update()
@@ -105,4 +130,4 @@ class Workspace(ABC):
         # Mantém em loop o método __update()
         self._window.after(self._time, self.__update)
 
-    
+
