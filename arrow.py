@@ -11,10 +11,10 @@ class Main(Workspace):
         super().__init__()
 
     def config(self):
-        self._title = "Arrow"
+        self.set_title("Arrow")
         self.size(400, 300)
-        self._time = 20
-        self._window.bind('<Button-1>', self.newpos)
+        self.set_time(20)
+        self.bind('<Button-1>', self.newpos)
 
     def draw(self):
         self.line(self.x, self.y, self.x + self.xv, self.y + self.yv, fill="black", arrow=LAST)
