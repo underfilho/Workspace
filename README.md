@@ -2,7 +2,7 @@
 "Biblioteca" Python para a criação de desenhos e sistemas físicos.
 Baseado em https://processing.org/
 
-arrow.py e pendulum.py servem como simples exemplos do uso da biblioteca
+Como exemplos do uso da biblioteca, arrow.py é uma simples setinha batendo nas bordas que muda sua posição no clique, pendulum.py simula um pêndulo simples fisicamente e simple_snake cria o jogo da cobrinha com menos de 50 linhas de código.
 
 # Como usar
 
