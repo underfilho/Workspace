@@ -24,20 +24,30 @@ class MyClass(Workspace):
 # Configurações
 
 ```self.set_title("Titulo")``` Define o titulo da janela.
+
 ```self.size(width, height)``` Define o tamanho da janela.
+
 ```self.coord_sys(center_x, center_y, e1: base_e1, e2: base_e2)``` Explico melhor a seguir.
+
 ```self.set_time(20)``` Primeira opção de determinar o tempo, a cada 20 milissegundos draw é chamada novamente e um novo frame gerado.
+
 ```self.set_fps(30)``` Segunda opção de definir o tempo (aproximadamente 30 frames por segundo, pois ao converter pra int acaba perdendo precisão).
+
 ```self.bind("<Return>", funcao)``` Cria um evento pra quando a tecla em questão for pressionada.
     
     
 # Desenhos
 
 Os desenhos usam a class Vector de workspace.py como argumentos para facilitar.
+
 ```self.line(ponto_inicial, ponto_final, permanencia, fill="blue")``` Desenha uma linha com os pontos em questão (Vetores da classe Vector em workspace.py), permanência é um argumento bool opcional, caso True o desenho não será apagado nos próximos frames, argumentos extras também são possíveis, nesse caso a linha será azul. (Permanência e argumentos adicionais estão disponíveis para todos os desenhos).
+
 ```self.circle(centro, a, b, fill="black")``` Desenha uma elipse, a e b são numerps, caso queira realmente um círculo dê o mesmo valor para a e b, sendo assim, o raio do círculo, em fill você pode definir a cor (assim como para self.line).
+
 ```self.rec(centro, largura, altura)``` e ```self.rec_corners(superior_esquerdo, inferior_direito)``` Desenham retângulos, rec baseado no centro e rec_corners usando dois pontos, superior esquerdo e inferior direito.
+
 Com ```self.stop()``` e ```self.play()``` é possível pausar e dar play novamente no ciclo.
+
 Para conhecer mais argumentos extras http://www.effbot.org/tkinterbook/canvas.htm (self.line envia todos os argumentos extras para canvas.create_line, assim como circle para create_oval)
 
 # Sistema de coordenadas
