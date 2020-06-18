@@ -6,8 +6,17 @@ class Vector:
         self.x = x
         self.y = y
 
+    def times(self, num):
+        return Vector(self.x * num, self.y * num)
+
+    def xy(self):
+        return (self.x, self.y)
+
     def __add__(self, other):
         return Vector(self.x + other.x, self.y + other.y)
+
+    def __str__(self):
+        return "({},{})".format(self.x, self.y)
 
     def equal(self, other):
         return self.x == other.x and self.y == other.y
@@ -26,7 +35,7 @@ class Workspace(ABC):
         self._time = 50
         self._drawings = [] # Guardará os desenhos feitos em cada ciclo para serem apagados no próximo 
 
-        self.__setup()
+        self._setup()
 
         self._window.mainloop()
 
@@ -61,31 +70,37 @@ class Workspace(ABC):
         self._height = height
 
     # Variáveis "perm" definem se o objeto desenhado vai ser apagado em cada update ou não
-    def line(self, x1, y1, x2, y2, perm = False, **kwargs):
+    def line(self, start, end, perm = False, **kwargs):
+        x1, y1 = start.xy()
+        x2, y2 = end.xy()
         if not perm:
-            self._drawings.append(self._canvas.create_line(self.coord(x1, 0), self.coord(y1, 1), self.coord(x2, 0), self.coord(y2, 1), **kwargs))
+            self._drawings.append(self._canvas.create_line(self.systopx(x1, 0), self.systopx(y1, 1), self.systopx(x2, 0), self.systopx(y2, 1), **kwargs))
         else:
-            self._canvas.create_line(self.coord(x1, 0), self.coord(y1, 1), self.coord(x2, 0), self.coord(y2, 1), **kwargs)
+            self._canvas.create_line(self.systopx(x1, 0), self.systopx(y1, 1), self.systopx(x2, 0), self.systopx(y2, 1), **kwargs)
 
-    def circle(self, x, y, a, b, perm = False, **kwargs):
+    def circle(self, center, a, b, perm = False, **kwargs):
+        x, y = center.xy()
         if not perm:
-            self._drawings.append(self._canvas.create_oval(self.coord(x-a, 0), self.coord(y-b, 1), self.coord(x+a, 0), self.coord(y+b, 1), **kwargs))
+            self._drawings.append(self._canvas.create_oval(self.systopx(x-a, 0), self.systopx(y-b, 1), self.systopx(x+a, 0), self.systopx(y+b, 1), **kwargs))
         else:
-            self._canvas.create_oval(self.coord(x-a, 0), self.coord(y-b, 1), self.coord(x+a, 0), self.coord(y+b, 1), **kwargs)
+            self._canvas.create_oval(self.systopx(x-a, 0), self.systopx(y-b, 1), self.systopx(x+a, 0), self.systopx(y+b, 1), **kwargs)
 
-    def rec(self, x, y, width, height, perm = False, **kwargs):
+    def rec(self, center, width, height, perm = False, **kwargs):
+        x, y = center.xy()
         a = width/2
         b = height/2
         if not perm:
-            self._drawings.append(self._canvas.create_rectangle(self.coord(x-a, 0), self.coord(y-b, 1), self.coord(x+a, 0), self.coord(y+b, 1), **kwargs))
+            self._drawings.append(self._canvas.create_rectangle(self.systopx(x-a, 0), self.systopx(y-b, 1), self.systopx(x+a, 0), self.systopx(y+b, 1), **kwargs))
         else:
-            self._canvas.create_rectangle(self.coord(x-a, 0), self.coord(y-b, 1), self.coord(x+a, 0), self.coord(y+b, 1), **kwargs)
+            self._canvas.create_rectangle(self.systopx(x-a, 0), self.systopx(y-b, 1), self.systopx(x+a, 0), self.systopx(y+b, 1), **kwargs)
 
-    def rec_corners(self, x1, y1, x2, y2, perm = False, **kwargs):
+    def rec_corners(self, topleft, rightbot, perm = False, **kwargs):
+        x1, y1 = topleft.xy()
+        x2, y2 = rightbot.xy()
         if not perm:
-            self._drawings.append(self._canvas.create_rectangle(self.coord(x1, 0), self.coord(y1, 1), self.coord(x2, 0), self.coord(y2, 1), **kwargs))
+            self._drawings.append(self._canvas.create_rectangle(self.systopx(x1, 0), self.systopx(y1, 1), self.systopx(x2, 0), self.systopx(y2, 1), **kwargs))
         else:
-            self._canvas.create_rectangle(self.coord(x1, 0), self.coord(y1, 1), self.coord(x2, 0), self.coord(y2, 1), **kwargs)
+            self._canvas.create_rectangle(self.systopx(x1, 0), self.systopx(y1, 1), self.systopx(x2, 0), self.systopx(y2, 1), **kwargs)
 
     # Mudar o sistema de coordenadas que por padrão tem o centro no canto superior esquerdo e tem o eixo y invertido
     # Para ter um sistema cartesiano padrão use coord_sys(self._width/2, self._height/2, 1, -1)
@@ -94,15 +109,15 @@ class Workspace(ABC):
         self._basis = [e1, e2]
 
     # Conversões
-    # Coordenadas no sistema definido para coordenadas em pixels. id = 0 para x 1 para y
-    def coord(self, num, id):
+    # Coordenadas no sistema definido para coordenadas em pixels. id = 0 para x e id = 1 para y
+    def systopx(self, num, id):
         return self._center[id] + num*self._basis[id]
 
-    # Coordenadas em pixels para coordenadas no sistema definido. id = 0 para x 1 para y
-    def _coord(self, num, id):
+    # Coordenadas em pixels para coordenadas no sistema definido. id = 0 para x e id = 1 para y
+    def pxtosys(self, num, id):
         return (num - self._center[id])/self._basis[id]
 
-    def __setup(self):
+    def _setup(self):
         self.config()
 
         self._window.geometry('%ix%i' % (self._width, self._height))
@@ -115,9 +130,9 @@ class Workspace(ABC):
         self._canvas = Canvas(frame, width=self._width, height=self._height, bg=self._color, highlightthickness=0)
         self._canvas.pack()
 
-        self.__update()
+        self._update()
 
-    def __update(self):
+    def _update(self):
         if self._play:
             # Apaga todos os desenhos do último ciclo
             for i in self._drawings:
@@ -127,7 +142,5 @@ class Workspace(ABC):
             # Desenha novamente
             self.draw()
 
-        # Mantém em loop o método __update()
-        self._window.after(self._time, self.__update)
-
-
+        # Mantém em loop o método _update()
+        self._window.after(self._time, self._update)
