@@ -7,7 +7,6 @@ Como exemplos do uso da biblioteca, arrow.py é o exemplo mais simples e inician
 # Como usar
 
 Primeiro de tudo você deve criar sua classe como filha de Workspace, no método __init__ crie suas variáveis (como posições e velocidades), não esqueça de chamar o ```super().__init__()```, config e draw são métodos abstratos, então você deve sobrescrevê-los
-Primeiro de tudo você deve criar sua classe como filha de Workspace, no método __init__ crie suas variáveis (como posições e velocidades), n
 ``` 
 class MyClass(Workspace):
   def __init__(self):
