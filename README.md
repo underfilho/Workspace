@@ -39,9 +39,9 @@ class MyClass(Workspace):
 # Desenhos
 Os desenhos usam a class Vector de workspace.py como argumentos para facilitar.
 
-```self.line(ponto_inicial, ponto_final, permanencia, fill="blue")``` Desenha uma linha com os pontos em questão (Vetores da classe Vector em workspace.py), permanência é um argumento opcional, caso True o desenho não será apagado nos próximos frames, argumentos extras também são possíveis, nesse caso a linha será azul. (Permanência e argumentos adicionais estão disponíveis para todos os desenhos).
+```self.line(ponto_inicial, ponto_final, permanencia, fill="blue")``` Desenha uma linha com os pontos em questão (Vetores da classe Vector em workspace.py), permanência é um argumento bool opcional, caso True o desenho não será apagado nos próximos frames, argumentos extras também são possíveis, nesse caso a linha será azul. (Permanência e argumentos adicionais estão disponíveis para todos os desenhos).
 
-```self.circle(centro, a, b, fill="black")``` Desenha uma elipse, caso queira realmente um círculo dê o mesmo valor para a e b, sendo assim, o raio do círculo, em fill você pode definir a cor (assim como para self.line).
+```self.circle(centro, a, b, fill="black")``` Desenha uma elipse, a e b são numerps, caso queira realmente um círculo dê o mesmo valor para a e b, sendo assim, o raio do círculo, em fill você pode definir a cor (assim como para self.line).
 
 ```self.rec(centro, largura, altura)``` e ```self.rec_corners(superior_esquerdo, inferior_direito)``` Desenham retângulos, rec baseado no centro e rec_corners usando dois pontos, superior esquerdo e inferior direito.
 
