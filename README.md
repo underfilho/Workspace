@@ -2,7 +2,17 @@
 Biblioteca Python para a criação de desenhos e sistemas físicos.
 Baseado em https://processing.org/
 
-Como exemplos do uso da biblioteca, arrow.py é o exemplo mais simples e iniciante, uma simples setinha batendo nas bordas que muda sua posição no clique, já pendulum.py simula um pêndulo simples fisicamente e simple_snake cria o jogo da cobrinha.
+Como exemplos do uso da biblioteca, [arrow.py](https://github.com/underfilho/Workspace/blob/master/arrow.py) é o exemplo mais simples e iniciante, uma simples setinha batendo nas bordas que muda sua posição no clique.
+
+<img src="https://user-images.githubusercontent.com/31104317/130129026-bfa9a34c-42e6-48ce-a125-623540001912.gif" width="40%" height="40%"/>
+
+Já [pendulum.py](https://github.com/underfilho/Workspace/blob/master/pendulum.py) simula um [pêndulo simples](https://en.wikipedia.org/wiki/Pendulum_(mathematics)) fisicamente usando menos de 30 linhas de código.
+
+<img src="https://user-images.githubusercontent.com/31104317/130129378-23d4bab6-16f9-4bc4-b1e9-5a72780d10dc.gif" width="40%" height="40%"/>
+
+E por último [simple_snake](https://github.com/underfilho/Workspace/blob/master/simple_snake.py) cria o famoso jogo da cobrinha, esse utilizando apenas 50 linha de código.
+
+<img src="https://user-images.githubusercontent.com/31104317/130129498-c1fdf9ac-9cd2-4e67-ab89-7c1f30944dad.gif" width="40%" height="40%"/>
 
 # Como usar
 
