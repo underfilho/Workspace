@@ -10,13 +10,12 @@ Já [pendulum.py](https://github.com/underfilho/Workspace/blob/master/pendulum.p
 
 <img src="https://user-images.githubusercontent.com/31104317/130129378-23d4bab6-16f9-4bc4-b1e9-5a72780d10dc.gif" width="40%" height="40%"/>
 
-E por último [simple_snake](https://github.com/underfilho/Workspace/blob/master/simple_snake.py) cria o famoso jogo da cobrinha, esse utilizando apenas 50 linha de código.
+E por último [simple_snake.py](https://github.com/underfilho/Workspace/blob/master/simple_snake.py) cria o famoso jogo da cobrinha, esse utilizando apenas 50 linha de código.
 
 <img src="https://user-images.githubusercontent.com/31104317/130129498-c1fdf9ac-9cd2-4e67-ab89-7c1f30944dad.gif" width="40%" height="40%"/>
 
 # Como usar
-
-Primeiro de tudo você deve criar sua classe como filha de Workspace, no método __init__ crie suas variáveis (como posições e velocidades), não esqueça de chamar o ```super().__init__()```, config e draw são métodos abstratos, então você deve sobrescrevê-los
+Primeiro baixe [Workspace.py](https://github.com/underfilho/Workspace/blob/master/workspace.py) na sua pasta do projeto e importe, depois você deve criar sua classe como filha de Workspace, no método __init__ crie suas variáveis (como posições e velocidades), não esqueça de chamar o ```super().__init__()```, config e draw são métodos abstratos, então você deve sobrescrevê-los
 ``` 
 class MyClass(Workspace):
   def __init__(self):
