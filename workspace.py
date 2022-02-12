@@ -6,15 +6,18 @@ class Vector:
         self.x = x
         self.y = y
 
-    def times(self, num):
-        return Vector(self.x * num, self.y * num)
-
     def xy(self):
         return (self.x, self.y)
 
     def __add__(self, other):
         return Vector(self.x + other.x, self.y + other.y)
 
+    def __sub__(self, other):
+        return Vector(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, num):
+        return Vector(self.x * num, self.y * num)
+    
     def __str__(self):
         return "({},{})".format(self.x, self.y)
 
@@ -63,7 +66,7 @@ class Workspace(ABC):
         self._play = True
 
     def bind(self, str, func):
-        self._window.bind(str, func)
+        self._window.bind(str, lambda event: self._callback(event, func))
 
     def size(self, width, height):
         self._width = width
@@ -116,6 +119,11 @@ class Workspace(ABC):
     # Coordenadas em pixels para coordenadas no sistema definido. id = 0 para x e id = 1 para y
     def pxtosys(self, num, id):
         return (num - self._center[id])/self._basis[id]
+
+    def _callback(self, event, func):
+        event.x = self.pxtosys(event.x, 0)
+        event.y = self.pxtosys(event.y, 1)
+        func(event)
 
     def _setup(self):
         self.config()
